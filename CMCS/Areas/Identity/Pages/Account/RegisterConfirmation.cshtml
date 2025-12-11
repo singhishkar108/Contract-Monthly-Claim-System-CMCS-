@@ -1,0 +1,53 @@
+﻿@page
+@model RegisterConfirmationModel
+@{
+    ViewData["Title"] = "Register Confirmation";
+}
+
+@{
+    // Adding some CSS for centering content
+    <style>
+        .centered-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh; /* Adjust height as needed */
+            text-align: center;
+        }
+
+        .btn-primary {
+            margin-top: 20px;
+        }
+    </style>
+}
+
+<div class="centered-content">
+    <div>
+        <h1>@ViewData["Title"]</h1>
+        @{
+            if (Model.DisplayConfirmAccountLink)
+            {
+                <p>
+                    <a id="confirm-link" class="btn btn-primary" href="@Model.EmailConfirmationUrl">Click here to confirm your account</a>
+                </p>
+            }
+            else
+            {
+                <p>
+                    Please check your email to confirm your account.
+                </p>
+            }
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+    <script>
+        $(document).ready(function () {
+            toastr.success('Please check your email to confirm your account.');
+        });
+    </script>
+}

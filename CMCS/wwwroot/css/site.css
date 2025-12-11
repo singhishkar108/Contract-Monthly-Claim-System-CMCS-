@@ -1,0 +1,135 @@
+/* Universal selector to apply font settings across all elements */
+* {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    box-sizing: border-box; /* Maintain consistent box-sizing across all elements */
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+/* Ensure all text elements inherit the global font settings */
+p, h1, h2, h3, h4, h5, h6, .table-striped th, .table-striped td, .table-bordered th, .table-bordered td {
+    font-family: inherit;
+    font-optical-sizing: inherit;
+    font-weight: inherit;
+    font-style: inherit;
+}
+
+.table thead th {
+    background-color: #002a52; /* Set background color */
+    color: white; /* Set text color to white for better contrast */
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    text-align: center;
+    padding: 12px; /* Optional: Adjust padding for better appearance */
+}
+
+/* Ensure proper spacing and alignment */
+.file-item {
+    margin-bottom: 15px; /* Add spacing between each file */
+}
+
+.file-name {
+    display: block; /* Ensure the filename takes up a full line */
+    font-weight: 500;
+}
+
+.download-button {
+    display: flex;
+    justify-content: flex-start; /* Align the button to the left */
+}
+
+
+/* Styling for buttons and focus states */
+.btn, /* Updated to include .btn */
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    font-family: "Montserrat", serif; /* Adjusted to match button style */
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    color: white;
+    background: #002a52;
+}
+
+    .btn:hover,
+    .btn:focus {
+        background: #003d79; /* Adjust hover/focus background color */
+        color: white; /* Adjust hover/focus text color */
+        transform: scale(1.05); /* Apply scaling effect */
+    }
+
+/* Explicitly setting navbar and footer font if needed */
+.navbar, .footer, a {
+    font-family: inherit;
+    font-optical-sizing: inherit;
+    font-weight: inherit;
+    font-style: inherit;
+}
+
+.navbar-custom {
+    background-color: #002a52;
+}
+
+.navbar-text,
+.nav-link, .navbar-nav .nav-link {
+    font-family: "Montserrat", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    color: #cce5ff !important;
+    transition: transform 0.4s ease, color 0.4s ease;
+}
+
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link:focus {
+        color: white !important;
+        transform: scale(1.05);
+    }
+
+.navbar-brand {
+    font-family: "Montserrat", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    color: white !important;
+    transition: transform 0.4s ease, color 0.4s ease;
+}
+
+    .navbar-brand:hover {
+        transform: scale(1.05);
+        color: #cce5ff !important;
+    }
+
+/* Footer Styling */
+.footer {
+    background-color: #003d79; /* Set background color */
+    color: white; /* Set text color to white */
+}
+
+    /* Ensure links in the footer retain their default color */
+    .footer a {
+        color: #cce5ff; /* Inherit color from parent element */
+    }
+
+        .footer a:hover,
+        .footer a:focus {
+            color: white; /* Change color of hyperlinks on hover/focus if needed */
+        }

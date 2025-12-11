@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityUser>
+
+<h2 class="text-center">All Lecturers</h2>
+
+<div class="container mt-4">
+
+    @if (Model.Any())
+    {
+        <table class="table table-bordered table-striped">
+            <thead class="table-primary">
+                <tr>
+                    <th>Lecturer ID</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var lecturer in Model)
+                {
+                    <tr>
+                        <td>@lecturer.Id/td>
+                        <td>@lecturer.Email</td>
+                        <td>
+                            <a asp-action="GenReport" asp-route-lecturerId="@lecturer.Id" class="btn btn-primary btn-sm">
+                                Generate Report
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="alert alert-warning text-center" role="alert">
+            No lecturers found.
+        </div>
+    }
+</div>

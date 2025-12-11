@@ -1,0 +1,63 @@
+﻿@{
+    ViewData["Title"] = "Generate Report";
+}
+
+<h2>Generate Claim Report</h2>
+
+<form asp-action="GenReport" asp-controller="Claims" method="post" id="generateReportForm">
+    <input type="hidden" name="lecturerId" value="@ViewBag.LecturerId" id="lecturerId" />
+
+    <div class="form-group">
+        <label for="startDate">Start Date</label>
+        <input type="date" id="startDate" name="startDate" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label for="endDate">End Date</label>
+        <input type="date" id="endDate" name="endDate" class="form-control" required />
+    </div>
+
+    <div id="errorMessage" class="alert alert-danger" style="display: none;">
+        No claims found for the specified date range.
+    </div>
+
+    <button type="submit" id="generateButton" class="btn btn-primary" disabled>Generate Report</button>
+</form>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Enable validation when date inputs change
+        $('#startDate, #endDate').on('change', function () {
+            validateClaims();
+        });
+
+        function validateClaims() {
+            var lecturerId = $('#lecturerId').val();
+            var startDate = $('#startDate').val();
+            var endDate = $('#endDate').val();
+
+            if (lecturerId && startDate && endDate) {
+                $.ajax({
+                    url: '@Url.Action("ValidateClaims", "Claims")',
+                    type: 'POST',
+                    data: { lecturerId: lecturerId, startDate: startDate, endDate: endDate },
+                    success: function (hasClaims) {
+                        if (hasClaims) {
+                            $('#errorMessage').hide();
+                            $('#generateButton').prop('disabled', false);
+                        } else {
+                            $('#errorMessage').show();
+                            $('#generateButton').prop('disabled', true);
+                        }
+                    },
+                    error: function () {
+                        alert('Error validating claims.');
+                    }
+                });
+            } else {
+                $('#generateButton').prop('disabled', true);
+            }
+        }
+    });
+</script>

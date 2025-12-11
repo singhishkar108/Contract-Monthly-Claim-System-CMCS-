@@ -1,0 +1,201 @@
+﻿@model CMCS.Models.Claims
+
+@{
+    ViewData["Title"] = "Submit Claims";
+}
+
+<h2 class="text-center mb-4">Submit Claims</h2>
+
+<div class="container">
+    <form asp.action="SubmitClaim" method="post" enctype="multipart/form-data" id="claimForm" class="shadow p-4 rounded bg-light">
+        <div class="row mb-3">
+            <label asp-for="LecturerID" class="form-label">Lecturer ID</label>
+            <input asp-for="LecturerID" class="form-control" required placeholder="Enter your Lecturer ID" />
+            <span asp-validation-for="LecturerID" class="text-danger"></span>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label asp-for="FirstName" class="form-label">First Name</label>
+                <input asp-for="FirstName" class="form-control" required placeholder="Enter your First Name" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="LastName" class="form-label">Last Name</label>
+                <input asp-for="LastName" class="form-control" required placeholder="Enter your Last Name" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label asp-for="ClaimsPeriodStart" class="form-label">Claims Start Date</label>
+                <input asp-for="ClaimsPeriodStart" type="date" class="form-control" required />
+                <span asp-validation-for="ClaimsPeriodStart" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="ClaimsPeriodEnd" class="form-label">Claims End Date</label>
+                <input asp-for="ClaimsPeriodEnd" type="date" class="form-control" required />
+                <span asp-validation-for="ClaimsPeriodEnd" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label asp-for="HoursWorked" class="form-label">Hours Worked</label>
+                <input asp-for="HoursWorked" class="form-control" id="hoursWorked" required placeholder="Enter the hours worked" />
+                <span asp-validation-for="HoursWorked" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="RatePerHour" class="form-label">Rate Per Hour</label>
+                <input asp-for="RatePerHour" class="form-control" id="ratePerHour" required placeholder="Enter rate per hour" />
+                <span asp-validation-for="RatePerHour" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>
+                <input type="checkbox" id="addOvertime" /> Add Overtime
+            </label>
+        </div>
+
+        <div id="overtimeFields" style="display: none;">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="OvertimeHours">Overtime Hours</label>
+                        <input asp-for="OvertimeHours" class="form-control" id="overtimeHours" />
+                        <span asp-validation-for="OvertimeHours" class="text-danger" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="OvertimeRate">Overtime Rate</label>
+                        <input asp-for="OvertimeRate" class="form-control" id="overtimeRate" readonly />
+                        <span asp-validation-for="OvertimeRate" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+                <label asp-for="DescriptionOfWork" class="form-label">Description of Work</label>
+                <textarea asp-for="DescriptionOfWork" class="form-control" required placeholder="Provide a brief description of the work done"></textarea>
+                <span asp-validation-for="DescriptionOfWork" class="text-danger"></span>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-12">
+                <label>Supporting Documents</label>
+                <input type="file" name="supportingDocument" class="form-control" id="supportingDocument" />
+            </div>
+        </div>
+
+
+        <input asp-for="UserID" type="hidden" />
+        <input asp-for="ClaimStatus" type="hidden" />
+
+        <p>
+            
+        </p>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary w-50">Submit Claim</button>
+        </div>
+    </form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
+
+        <script>
+            $(document).ready(function () {
+
+                $('#addOvertime').change(function () {
+                    if (this.checked) {
+                        $('#overtimeFields').slideDown();
+                        calculateOvertimeRate();
+                    } else {
+                        $('#overtimeFields').slideUp();
+                        $('#overtimeHours').val('');
+                        $('#overtimeRate').val('');
+                    }
+                });
+
+
+                function calculateOvertimeRate() {
+                    const ratePerHour = parseFloat($('#ratePerHour').val()) || 0;
+                    const overtimeRate = ratePerHour * 1.5;
+                    $('#overtimeRate').val(overtimeRate.toFixed(2));
+                }
+
+                //calculate total amount dynamically
+                function calculateTotal() {
+                    const hoursWorked = parseFloat($('#hoursWorked').val()) || 0;
+                    const ratePerHour = parseFloat($('#ratePerHour').val()) || 0;
+                    const overtimeHours = parseFloat($('#overtimeHours').val()) || 0;
+                    const overtimeRate = parseFloat($('#overtimeRate').val()) || 0;
+
+                    const normalPay = hoursWorked * ratePerHour;
+                    const overtimePay = overtimeHours * overtimeRate;
+                    const totalAmount = normalPay + overtimePay;
+
+                    $('#totalAmount').val(totalAmount.toFixed(2)); //update total amount field
+                }
+
+
+                //bind validations and calculations to input changes
+                $('#hoursWorked, #ratePerHour, #overtimeHours').on('input', function () {
+                    if (validateInputs()) {
+                        calculateOvertimeRate();
+                        calculateTotal();
+                    }
+                });
+
+                //validate dates on change
+                $('#ClaimsPeriodStart, #ClaimsPeriodEnd').on('change', function () {
+                    validateInputs();
+                });
+
+                //handle form submission with Toastr notifications
+                $('#claimForm').on('submit', function (event) {
+                    event.preventDefault();
+
+                    toastr.clear();
+
+                    let hoursWorked = parseFloat($('#hoursWorked').val()) || 0;
+                    let ratePerHour = parseFloat($('#ratePerHour').val()) || 0;
+                    let overtimeHours = parseFloat($('#overtimeHours').val()) || 0;
+                    let overtimeRate = parseFloat($('#overtimeRate').val()) || 0;
+
+                    let normalPay = hoursWorked * ratePerHour;
+                    let overtimePay = overtimeHours * overtimeRate;
+                    let totalAmount = normalPay + overtimePay;
+
+                    toastr.success('Total amount due: R' + totalAmount.toFixed(2), 'Amount Calculated', {
+                        "positionClass": "toast-top-right",
+                        "timeOut": "5000",
+                        "closeButton": true,
+                        "progressBar": true
+                    });
+
+                    setTimeout(function () {
+                        toastr.success('Claim has been submitted successfully!', 'Submission Successful', {
+                            "positionClass": "toast-top-right",
+                            "timeOut": "5000",
+                            "closeButton": true,
+                            "progressBar": true
+                        });
+
+                        setTimeout(function () {
+                            $('#claimForm')[0].submit(); //submit
+                        }, 1000);
+                    }, 1000);
+                });
+            });
+
+        </script>
+    }

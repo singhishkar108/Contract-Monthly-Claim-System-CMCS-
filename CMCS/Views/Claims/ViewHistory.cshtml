@@ -1,0 +1,88 @@
+﻿@model IEnumerable<CMCS.Models.Claims>
+
+<h2 class="text-center mb-4">Claim History</h2>
+
+@if (Model.Any())
+    {
+        <div class="table-container">
+        <table class="table table-hover table-bordered">
+            <thead>
+                    <tr>
+                        <th>Claim ID</th>
+                        <th>Claim Period Start</th>
+                        <th>Claim Period End</th>
+                        <th>Total Amount</th>
+                        <th>Description</th>
+                        <th>Date Submitted</th>
+                        <th>Claim Status</th>
+                        <th>Files</th>
+
+                    </tr>
+                </thead>
+                <tbody id="claimsTableBody">
+                    @foreach (var claim in Model)
+                    {
+                        <tr class="claim-row">
+                            <td>@claim.Id</td>
+                            <td>@claim.ClaimsPeriodStart.ToString("yyyy-MM-dd")</td>
+                            <td>@claim.ClaimsPeriodEnd.ToString("yyyy-MM-dd")</td>
+                            <td>@claim.TotalAmount.ToString("C")</td>
+                            <td>@claim.DescriptionOfWork</td>
+                            <td>@claim.DateSubmitted.ToString("yyyy-MM-dd")</td>
+                            <td>@claim.ClaimStatus</td>
+
+                            <td>
+                                @if (claim.File.Any())
+                                {
+                                    <ul style="list-style: none; padding: 0;">
+                                        @foreach (var file in claim.File)
+                                        {
+                                            <li>
+                                                <span>@file.FileName</span>
+                                            <a href="@Url.Action("FileDownload", "Claims", new { id = file.FileId })" class="btn btn-primary btn-sm">
+                                                    <i class="fas fa-download"></i> Download
+                                                </a>
+                                            </li>
+                                        }
+                                    </ul>
+                                }
+                                else
+                                {
+                                    <p>No files attached</p>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <p class="alert alert-warning">No claims found.</p>
+    }
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Event listener for the Claim ID input field
+        $('#claimIdInput').on('keyup', function () {
+            var claimId = $(this).val().toLowerCase();
+
+            $('#claimsTableBody tr').filter(function () {
+                // Get the Claim ID from the first <td> (index 0)
+                var rowClaimId = $(this).find('td:eq(0)').text().toLowerCase();
+
+                // Show or hide rows based on whether the Claim ID matches the input
+                $(this).toggle(rowClaimId.includes(claimId));
+            });
+        });
+
+        // Reset button clears input and shows all rows
+        $('#resetButton').click(function () {
+            $('#claimIdInput').val(''); // Clear the input field
+            $('#claimsTableBody tr').show(); // Show all rows
+        });
+    });
+</script>
