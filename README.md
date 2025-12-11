@@ -405,21 +405,21 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ### 1. What functionalities does the CMCS provide, and how are they used?
 
-**1. Claim Submission**
+1. **Claim Submission**
 
-- The **CMCS** enables lecturers to efficiently **prepare and submit their monthly claims** through an intuitive digital interface. Users are guided to input all required details, such as **hours worked**, **claim period**, and **hourly rates**. Once the form is completed, lecturers can submit their claims for administrative review and approval. This feature reduces manual paperwork and ensures accurate, timely submission of claims.
+  - The **CMCS** enables lecturers to efficiently **prepare and submit their monthly claims** through an intuitive digital interface. Users are guided to input all required details, such as **hours worked**, **claim period**, and **hourly rates**. Once the form is completed, lecturers can submit their claims for administrative review and approval. This feature reduces manual paperwork and ensures accurate, timely submission of claims.
 
-**2. Search and Filter Capabilities**
+2. **Search and Filter Capabilities**
 
-- To assist users in quickly locating specific claims, the system offers **robust search and filtering tools**. Claims can be filtered by parameters such as **lecturer name**, **claim period**, **status**, or **date of submission**. These tools significantly improve efficiency, especially when managing a high volume of claims.
+  - To assist users in quickly locating specific claims, the system offers **robust search and filtering tools**. Claims can be filtered by parameters such as **lecturer name**, **claim period**, **status**, or **date of submission**. These tools significantly improve efficiency, especially when managing a high volume of claims.
 
-**3. User Management**
+3. **User Management**
 
-- Administrators have access to **comprehensive user management controls**. Through the dedicated interface, admins can **add new users**, **edit existing user information**, **reset passwords**, or **deactivate accounts** when necessary. This functionality ensures that system access remains secure, up to date, and aligned with institutional requirements.
+  - Administrators have access to **comprehensive user management controls**. Through the dedicated interface, admins can **add new users**, **edit existing user information**, **reset passwords**, or **deactivate accounts** when necessary. This functionality ensures that system access remains secure, up to date, and aligned with institutional requirements.
 
-**4. Report Generation**
+4. **Report Generation**
 
-- The CMCS supports the **generation of detailed reports** related to claims processing. Administrators can produce **summaries and detailed breakdowns** of submitted, approved, and rejected claims for any selected period. These reports assist the payroll department by providing accurate data for payment processing and offering valuable insights for auditing and record-keeping.
+  - The CMCS supports the **generation of detailed reports** related to claims processing. Administrators can produce **summaries and detailed breakdowns** of submitted, approved, and rejected claims for any selected period. These reports assist the payroll department by providing accurate data for payment processing and offering valuable insights for auditing and record-keeping.
 
 ### 2. What steps should I take if the application becomes unresponsive?
 
