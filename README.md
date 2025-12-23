@@ -11,13 +11,14 @@
 ✨ 1. [**Introduction**](#-1-introduction)<br>
 💻 2. [**Setting Up the Project Locally**](#-2-setting-up-the-project-locally)<br>
 ✅ 3. [**Features and Functionality**](#-3-features-and-functionality)<br>
-🔑 4. [**Admin Login Credentials**](#-4-admin-login-credentials)<br>
-🗺️ 5. [**Lecturer & Admin Navigation**](#️-5-lecturer--admin-navigation)<br>
-🏗️ 6. [**Architecture**](#️-6-architecture)<br>
-👥 7. [**Author and Contributions**](#-7-author-and-contributions)<br>
-⚖️ 8. [**MIT License**](#️-8-mit-license)<br>
-❓ 9. [**Frequently Asked Questions (FAQ)**](#-9-frequently-asked-questions-faq)<br>
-📚 10. [**References**](#-10-references)<br>
+🖼️ 4. [**Screenshots**](#️-4-screenshots)<br>
+🔑 5. [**Admin Login Credentials**](#-5-admin-login-credentials)<br>
+🗺️ 6. [**Lecturer & Admin Navigation**](#️-6-lecturer--admin-navigation)<br>
+🏗️ 7. [**Architecture**](#️-7-architecture)<br>
+👥 8. [**Author and Contributions**](#-8-author-and-contributions)<br>
+⚖️ 9. [**MIT License**](#️-9-mit-license)<br>
+❓ 10. [**Frequently Asked Questions (FAQ)**](#-10-frequently-asked-questions-faq)<br>
+📚 11. [**References**](#-11-references)<br>
 
 ---
 
@@ -306,7 +307,23 @@ dotnet run
 
 ---
 
-## 🔑 4. Admin Login Credentials
+## 🖼️ 4. Screenshots
+
+|              Heading               |              Image / Screenshots               |
+| :--------------------------------: | :--------------------------------------------: |
+|           **Home Page**            |        ![HomePage](Assets/HomePage.png)        |
+|             **Login**              |           ![Login](Assets/Login.png)           |
+|       **Sumbmitting Claim**        | ![SubmitClaimsOne](Assets/SubmitClaimsOne.png) |
+| **Sumbmitting Claim Continued...** | ![SubmitClaimsTwo](Assets/SubmitClaimsTwo.png) |
+|        **Summary Of Claim**        |      ![SummaryOne](Assets/SummaryOne.png)      |
+| **Summary Of Claim Continued...**  |      ![SummaryTwo](Assets/SummaryTwo.png)      |
+|         **Claim History**          |    ![ClaimHistory](Assets/ClaimHistory.png)    |
+|     **List of Claims (Admin)**     |    ![ListOfClaims](Assets/ListOfClaims.png)    |
+|    **Lecturer Claims (Admin)**     |  ![LecturerClaims](Assets/LecturerClaims.png)  |
+
+---
+
+## 🔑 5. Admin Login Credentials
 
 **Email**: _admin@gmail.com_ <br>
 **Password**: _Admin123!_ <br>
@@ -316,7 +333,7 @@ dotnet run
 
 ---
 
-## 🗺️ 5. Lecturer & Admin Navigation
+## 🗺️ 6. Lecturer & Admin Navigation
 
 ### Lecturer Role
 
@@ -351,7 +368,7 @@ dotnet run
 
 ---
 
-## 🏗️ 6. Architecture
+## 🏗️ 7. Architecture
 
 ### Application Structure (ASP.NET Core MVC)
 
@@ -363,7 +380,7 @@ The application code adheres to the **MVC pattern**, which ensures a clear separ
 
 ---
 
-## 👥 7. Author and Contributions
+## 👥 8. Author and Contributions
 
 ### Primary Developer:
 
@@ -388,7 +405,7 @@ The application code adheres to the **MVC pattern**, which ensures a clear separ
 
 ---
 
-## ⚖️ 8. MIT License
+## ⚖️ 9. MIT License
 
 **Copyright © 2025 Ishkar Singh**<br>
 
@@ -401,25 +418,25 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ---
 
-## ❓ 9. Frequently Asked Questions (FAQ)
+## ❓ 10. Frequently Asked Questions (FAQ)
 
 ### 1. What functionalities does the CMCS provide, and how are they used?
 
 1. **Claim Submission**
 
-  - The **CMCS** enables lecturers to efficiently **prepare and submit their monthly claims** through an intuitive digital interface. Users are guided to input all required details, such as **hours worked**, **claim period**, and **hourly rates**. Once the form is completed, lecturers can submit their claims for administrative review and approval. This feature reduces manual paperwork and ensures accurate, timely submission of claims.
+- The **CMCS** enables lecturers to efficiently **prepare and submit their monthly claims** through an intuitive digital interface. Users are guided to input all required details, such as **hours worked**, **claim period**, and **hourly rates**. Once the form is completed, lecturers can submit their claims for administrative review and approval. This feature reduces manual paperwork and ensures accurate, timely submission of claims.
 
 2. **Search and Filter Capabilities**
 
-  - To assist users in quickly locating specific claims, the system offers **robust search and filtering tools**. Claims can be filtered by parameters such as **lecturer name**, **claim period**, **status**, or **date of submission**. These tools significantly improve efficiency, especially when managing a high volume of claims.
+- To assist users in quickly locating specific claims, the system offers **robust search and filtering tools**. Claims can be filtered by parameters such as **lecturer name**, **claim period**, **status**, or **date of submission**. These tools significantly improve efficiency, especially when managing a high volume of claims.
 
 3. **User Management**
 
-  - Administrators have access to **comprehensive user management controls**. Through the dedicated interface, admins can **add new users**, **edit existing user information**, **reset passwords**, or **deactivate accounts** when necessary. This functionality ensures that system access remains secure, up to date, and aligned with institutional requirements.
+- Administrators have access to **comprehensive user management controls**. Through the dedicated interface, admins can **add new users**, **edit existing user information**, **reset passwords**, or **deactivate accounts** when necessary. This functionality ensures that system access remains secure, up to date, and aligned with institutional requirements.
 
 4. **Report Generation**
 
-  - The CMCS supports the **generation of detailed reports** related to claims processing. Administrators can produce **summaries and detailed breakdowns** of submitted, approved, and rejected claims for any selected period. These reports assist the payroll department by providing accurate data for payment processing and offering valuable insights for auditing and record-keeping.
+- The CMCS supports the **generation of detailed reports** related to claims processing. Administrators can produce **summaries and detailed breakdowns** of submitted, approved, and rejected claims for any selected period. These reports assist the payroll department by providing accurate data for payment processing and offering valuable insights for auditing and record-keeping.
 
 ### 2. What steps should I take if the application becomes unresponsive?
 
@@ -492,7 +509,7 @@ If the application fails to start, consider the following troubleshooting steps:
 
 ---
 
-## 📚 10. References
+## 📚 11. References
 
 - **Anderson, Rick, and Learn Microsoft, 2024. “Get started with ASP.NET Core MVC.”** [online] _[learn.microsoft.com](https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/start-mvc?view=aspnetcore-8.0&tabs=visual-studio)_ [Accessed 25 September 2024].
 - **Cherry, Kendra, and Verywell Mind, 2024. “The Color Blue: Meaning, Color Psychology, Effects.”** [online] _[verywellmind.com](https://www.verywellmind.com/the-color-psychology-of-blue-2795815)_ [Accessed 15 October 2024].
